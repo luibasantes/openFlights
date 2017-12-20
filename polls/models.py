@@ -1,0 +1,47 @@
+from django.db import models
+
+# Create your models here.
+class Aeropuerto(models.Model):
+	
+	Airport_ID = models.CharField(max_length=250)
+	Name = models.CharField(max_length=250)
+	#City = models.CharField(max_lenght=250)
+	Country = models.CharField(max_length=250)
+	IATA = models.CharField(max_length=25)
+	ICAO = models.CharField(max_length=25)
+	#Latitude = models.CharField(max_lenght=250)
+	#Longitude = models.CharField(max_lenght=250)
+	#Altitude = models.CharField(max_lenght=250)
+	#Timezone = models.CharField(max_lenght=250)
+	#DST = models.CharField(max_lenght=250)
+	#Tz = models.CharField(max_lenght=250)
+	#Type = models.CharField(max_lenght=250)
+	#Source = models.CharField(max_lenght=250)
+	
+	def __str__(self):
+		return self.Name +" -- " + self.Country
+	
+	
+class Aerolinea(models.Model):
+	
+	Airline_ID = models.CharField(max_length=250)
+	Name = models.CharField(max_length=250)
+	#City = models.CharField(max_lenght=250)
+	Active = models.CharField(max_length=250)
+	IATA = models.CharField(max_length=25)
+	ICAO = models.CharField(max_length=25)
+	
+	def __str__(self):
+		return self.Name +" -- " + self.Active
+	
+		
+
+class Ruta(models.Model):
+	Airline_ID = models.CharField(max_length=250)
+	Source_airport_ID = models.CharField(max_length=250)
+	Destination_airport_ID = models.CharField(max_length=250)
+	Stops = models.BigIntegerField()
+	
+	def __str__(self):
+		return self.Airline_ID+": " + self.Source_airport_ID +" -- " + self.Destination_airport_ID
+	
