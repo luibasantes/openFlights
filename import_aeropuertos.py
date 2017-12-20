@@ -1,5 +1,5 @@
 import csv,sys,os 
-project_dir = "C:/Users/Luigi/Music/openFlights/website"
+project_dir = "C:/Users/CltControl/Music/openFlights/website"
 
 
 sys.path.append(project_dir)
@@ -17,7 +17,7 @@ from polls.models import Aeropuerto
 
 
 
-data1 = csv.reader(open("C:/Users/Luigi/Music/openFlights/aeropuerto.csv",encoding="utf-8"),delimiter=',')
+data1 = csv.reader(open("C:/Users/CltControl/Music/openFlights/aeropuerto.csv",encoding="utf-8"),delimiter=',')
 
 for row in data1:
 	aero = Aeropuerto()

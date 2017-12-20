@@ -38,10 +38,8 @@ class Aerolinea(models.Model):
 
 class Ruta(models.Model):
 	Airline_ID = models.CharField(max_length=250)
-	Source_airport_ID = models.CharField(max_length=250)
-	Destination_airport_ID = models.CharField(max_length=250)
+	Source_airport_ID = models.ForeignKey(Aeropuerto,related_name='SRC',on_delete=models.CASCADE,)
+	Destination_airport_ID = models.ForeignKey(Aeropuerto,on_delete=models.CASCADE,)
 	Stops = models.BigIntegerField()
 	
-	def __str__(self):
-		return self.Airline_ID+": " + self.Source_airport_ID +" -- " + self.Destination_airport_ID
 	
