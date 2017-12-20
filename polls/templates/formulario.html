@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flying</title>
+  {% load static %}
+	<link rel="stylesheet" href= "{% static "css/estilo.css" %}" />
+</head>
+<body>
+	<h1 class= "titulo">Flying</h1>
+	<form class= "form" method="POST" action="/procesar">
+		Origen: 
+		<select name="origen">
+      		<option>Ecuador</option>
+      		<option>Colombia</option>
+      		<option>Peru</option>
+		</select>
+		<br>
+		<br>
+		Destino:
+		<select name="destino">
+      		<option>Ecuador</option>
+      		<option>Colombia</option>
+      		<option>Peru</option>
+   		</select>
+      	<br>	
+		<input type="radio" name="vuelo" value="1">Vuelo directo
+		<br>
+		<input type="radio" name="vuelo" value="2">Vuelo con escala
+		<br>
+		<input type="submit" value="Buscar"><br>
+  	</form>
+  	<h1>Resultados de la búsqueda</h1>
+  	<table class="table">
+  		<tr>
+  			<th><strong>Aerolíena</th>
+  			<th><strong>IATA</th>
+  			<th><strong>País</th>
+  		</tr>
+  		<tr>
+  			<td align="center">AVIANCA</td>
+  			<td align="center">CELL1</td>
+  			<td align="center">ECUADOR</td>
+  		</tr>
+  		<tr>
+  			<td align="center">TAME</td>
+  			<td align="center">CELL2</td>
+  			<td align="center">PERU</td>
+  		</tr>
+  		<tr>
+	  		<td align="center">AMERICAN</td>
+	  		<td align="center">CELL3</td>
+	  		<td align="center">COLOMBIA</td>
+  		</tr>
+  	</table> 	
+</body>
+</html>
