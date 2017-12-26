@@ -69,20 +69,12 @@ def search(request):
 			rutas = Ruta.objects.filter(Stops=0,Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
 			respuesta=[]
 			for ruta in rutas:
-				try:
-					if( ruta.Airline_ID != "\\N"):
-						aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
-						if(aerolinea.Active == "Y"):				
-							opcion = []
-							opcion.append(aerolinea.Name)
-							opcion.append(aerolinea.IATA)
-							opcion.append(ruta.Airline_ID)
-							opcion.append(ruta.Stops)
-							respuesta.append(opcion)
-					else:
+				try:					
+					aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
+					if(aerolinea.Active == "Y"):				
 						opcion = []
-						opcion.append("\\N")
-						opcion.append("\\N")
+						opcion.append(aerolinea.Name)
+						opcion.append(aerolinea.IATA)
 						opcion.append(ruta.Airline_ID)
 						opcion.append(ruta.Stops)
 						respuesta.append(opcion)
@@ -95,20 +87,11 @@ def search(request):
 			aerolineas=[]
 			for ruta in rutas:
 				try:
-					if( ruta.Airline_ID != "\\N"):
-						aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
-						if(aerolinea.Active == "Y" and aerolinea.Name not in aerolineas):				
-							opcion = []
-							opcion.append(aerolinea.Name)
-							opcion.append(aerolinea.IATA)
-							opcion.append(ruta.Airline_ID)
-							opcion.append(ruta.Stops)
-							respuesta.append(opcion)
-					else:
-						
+					aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
+					if(aerolinea.Active == "Y" and aerolinea.Name not in aerolineas):				
 						opcion = []
-						opcion.append("\\N")
-						opcion.append("\\N")
+						opcion.append(aerolinea.Name)
+						opcion.append(aerolinea.IATA)
 						opcion.append(ruta.Airline_ID)
 						opcion.append(ruta.Stops)
 						respuesta.append(opcion)
