@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flying</title>
+  {% load static %}
+	<link rel="stylesheet" href= "{% static "css/estilo.css" %}" />
+</head>
+<body>
+	<h1>{{aerolinea.Name}}</h1>
+	<h4>ID : {{aerolinea.Airline_ID}}</h4>
+	<h4>Active : {{aerolinea.Active}}</h4>
+	<h4>IATA : {{aerolinea.IATA}}</h4>
+	<h4>ICAO : {{aerolinea.ICAO}}</h4>
+</body>
+</html>

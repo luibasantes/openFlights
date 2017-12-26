@@ -8,50 +8,46 @@
 </head>
 <body>
 	<h1 class= "titulo">Flying</h1>
-	<form class= "form" method="POST" action="/procesar">
+	<form class= "form" method="POST" action="{% url 'polls:search' %}">
+		{% csrf_token %}
 		Origen: 
-		<select name="origen">
-      		<option>Ecuador</option>
-      		<option>Colombia</option>
-      		<option>Peru</option>
+		<select name="origen" id="orig">
+		{% for choice in paises %}
+      		<option>{{choice}}</option>
+		{% endfor %}
 		</select>
 		<br>
 		<br>
 		Destino:
-		<select name="destino">
-      		<option>Ecuador</option>
-      		<option>Colombia</option>
-      		<option>Peru</option>
+		<select name="destino" id="dest">
+		{% for choice in paises %}
+      		<option>{{choice}}</option>
+		{% endfor %}
    		</select>
       	<br>	
-		<input type="radio" name="vuelo" value="1">Vuelo directo
+		<input type="radio" name="vuelo" value="0">Vuelo directo
 		<br>
-		<input type="radio" name="vuelo" value="2">Vuelo con escala
+		<input type="radio" name="vuelo" value="1">Vuelo con escala
 		<br>
 		<input type="submit" value="Buscar"><br>
   	</form>
-  	<h1>Resultados de la búsqueda</h1>
-  	<table class="table">
-  		<tr>
-  			<th><strong>Aerolíena</th>
-  			<th><strong>IATA</th>
-  			<th><strong>País</th>
-  		</tr>
-  		<tr>
-  			<td align="center">AVIANCA</td>
-  			<td align="center">CELL1</td>
-  			<td align="center">ECUADOR</td>
-  		</tr>
-  		<tr>
-  			<td align="center">TAME</td>
-  			<td align="center">CELL2</td>
-  			<td align="center">PERU</td>
-  		</tr>
-  		<tr>
-	  		<td align="center">AMERICAN</td>
-	  		<td align="center">CELL3</td>
-	  		<td align="center">COLOMBIA</td>
-  		</tr>
-  	</table> 	
+	{% if resultados %}
+		<h1>Resultados de la búsqueda</h1>
+		<table class="table">
+			<tr>
+				<th><strong>Aerolínea</th>
+				<th><strong>IATA</th>
+				<th><strong>Airline_ID</th>
+				<th><strong>Escalas</th>
+			</tr>
+			{% for objeto in resultados %}			
+				<tr>
+				{% for elem in objeto %}			
+					<td align="center">{{elem}}</td>
+				{% endfor %}
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
 </body>
 </html>

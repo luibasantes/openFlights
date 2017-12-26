@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flying</title>
+  {% load static %}
+	<link rel="stylesheet" href= "{% static "css/estilo.css" %}" />
+</head>
+<body>
+	<h1>AEROPUERTOS</h1>
+	<ul>
+		{% for aeropuerto in aeropuertos %}
+		<li><a href="/vuelos/aeropuertos/{{aeropuerto.Airport_ID}}">{{aeropuerto.Name}}</a></li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

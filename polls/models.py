@@ -41,5 +41,8 @@ class Ruta(models.Model):
 	Source_airport_ID = models.ForeignKey(Aeropuerto,related_name='SRC',on_delete=models.CASCADE,)
 	Destination_airport_ID = models.ForeignKey(Aeropuerto,on_delete=models.CASCADE,)
 	Stops = models.BigIntegerField()
+
 	
+class Pais(models.Model):
+	Name = models.CharField(max_length=250)
 	
