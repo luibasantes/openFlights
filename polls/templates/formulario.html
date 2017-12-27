@@ -33,11 +33,14 @@
   	</form>
 	{% if resultados %}
 		<h1>Resultados de la búsqueda</h1>
+		<h4>{{origen}}--->{{destino}}</h4>
 		<table class="table">
 			<tr>
 				<th><strong>Aerolínea</th>
 				<th><strong>IATA</th>
 				<th><strong>Airline_ID</th>
+				<th><strong>Airport Origen</th>
+				<th><strong>Airport Destination</th>
 				<th><strong>Escalas</th>
 			</tr>
 			{% for objeto in resultados %}			

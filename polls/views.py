@@ -64,40 +64,28 @@ def search(request):
 		origen= request.POST["origen"]
 		destino = request.POST["destino"] 
 		bandera_con_escala = request.POST["vuelo"]
-		
+		contenido["origen"]=origen
+		contenido["destino"]=destino
 		if (bandera_con_escala == "0"):
 			rutas = Ruta.objects.filter(Stops=0,Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
-			respuesta=[]
-			for ruta in rutas:
-				try:					
-					aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
-					if(aerolinea.Active == "Y"):				
-						opcion = []
-						opcion.append(aerolinea.Name)
-						opcion.append(aerolinea.IATA)
-						opcion.append(ruta.Airline_ID)
-						opcion.append(ruta.Stops)
-						respuesta.append(opcion)
-				except:
-					print("algo salio mal1")
-			contenido["resultados"]=respuesta
 		else:
 			rutas = Ruta.objects.filter(Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
-			respuesta=[]
-			aerolineas=[]
-			for ruta in rutas:
-				try:
-					aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
-					if(aerolinea.Active == "Y" and aerolinea.Name not in aerolineas):				
-						opcion = []
-						opcion.append(aerolinea.Name)
-						opcion.append(aerolinea.IATA)
-						opcion.append(ruta.Airline_ID)
-						opcion.append(ruta.Stops)
-						respuesta.append(opcion)
-				except:
-					print("algo salio mal2")
-			contenido["resultados"]=respuesta
+		respuesta=[]
+		for ruta in rutas:
+			try:					
+				aerolinea = Aerolinea.objects.get(Airline_ID = ruta.Airline_ID)
+				if(aerolinea.Active == "Y"):				
+					opcion = []
+					opcion.append(aerolinea.Name)
+					opcion.append(aerolinea.IATA)
+					opcion.append(ruta.Airline_ID)
+					opcion.append(ruta.Source_airport_ID.Name)
+					opcion.append(ruta.Destination_airport_ID.Name)
+					opcion.append(ruta.Stops)
+					respuesta.append(opcion)
+			except:
+				print("algo salio mal")
+		contenido["resultados"]=respuesta
 	except:
 		raise Http404("Problemas con el FORMULARIO")
 	return render (request,"formulario.html",contenido)
