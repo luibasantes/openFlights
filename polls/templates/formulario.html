@@ -55,7 +55,9 @@
 			</tr>
             {% if resultados %}
 		        <h1 class="titulo">Resultados de la búsqueda</h1>
-
+				<h4 class="titulo">Desde: {{origen}}</h4>
+				<h4 class="titulo">Hasta: {{destino}}</h4>
+				<h4 class="titulo">Tipo de Vuelo: {{vuelo}}</h4>
                 {% for objeto in resultados %}
                     <tr>
                     {% for elem in objeto %}

@@ -68,8 +68,10 @@ def search(request):
 		contenido["destino"]=destino
 		if (bandera_con_escala == "0"):
 			rutas = Ruta.objects.filter(Stops=0,Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
+			contenido["vuelo"]="Directo"
 		else:
-			rutas = Ruta.objects.filter(Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
+			rutas = Ruta.objects.filter(Stops__gt=0,Source_airport_ID__Country=origen,Destination_airport_ID__Country=destino)
+			contenido["vuelo"]="Con Escalas"
 		respuesta=[]
 		for ruta in rutas:
 			try:
@@ -83,6 +85,8 @@ def search(request):
 					respuesta.append(opcion)
 			except:
 				print("algo salio mal")
+		if (len(respuesta)==0):
+			respuesta=[["N/A","N/A","N/A","N/A"]]
 		contenido["resultados"]=respuesta
 	except:
 		raise Http404("Problemas con el FORMULARIO")
