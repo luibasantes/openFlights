@@ -1,10 +1,6 @@
 .titulo{
 	text-align: center;
 }
-.form{
-	padding: 0 0 0 45%;
-}
-
 
 table {
 	font-size: 20px;
@@ -19,7 +15,7 @@ th{
 	font-size: 23px;
 	font-weight: normal;
 	padding: 8px;
-	background: gray;
+	background: #bcc6c6;
     border-top: 4px solid black;   
     border-bottom: 1px solid #fff; 
 }
@@ -32,5 +28,5 @@ td {
 }
 
 tr:hover td { 
-	background: gray;
+	background: #bcc6c6;
 }

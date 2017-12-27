@@ -3,54 +3,68 @@
 <head>
 	<meta charset="utf-8">
 	<title>Flying</title>
-  {% load static %}
-	<link rel="stylesheet" href= "{% static "css/estilo.css" %}" />
+  	{% load static %}
+	<link rel="stylesheet" href= "{% static 'css/estilo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1 class= "titulo">Flying</h1>
-	<form class= "form" method="POST" action="{% url 'polls:search' %}">
-		{% csrf_token %}
-		Origen: 
-		<select name="origen" id="orig">
-		{% for choice in paises %}
-      		<option>{{choice}}</option>
-		{% endfor %}
-		</select>
-		<br>
-		<br>
-		Destino:
-		<select name="destino" id="dest">
-		{% for choice in paises %}
-      		<option>{{choice}}</option>
-		{% endfor %}
-   		</select>
-      	<br>	
-		<input type="radio" name="vuelo" value="0" checked="checked">Vuelo directo
-		<br>
-		<input type="radio" name="vuelo" value="1">Vuelo con escala
-		<br>
-		<input type="submit" value="Buscar"><br>
-  	</form>
-	{% if resultados %}
-		<h1>Resultados de la búsqueda</h1>
-		<h4>{{origen}}--->{{destino}}</h4>
-		<table class="table">
+    <div class="container">
+        <h1 class= "titulo">Flying</h1>
+        <form class= "form-horizontal" method="POST" action="{% url 'polls:search' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="control-label col-sm-5" for="orig">Origen:</label>
+                <select name="origen" id="orig">
+                {% for choice in paises %}
+                    <option>{{choice}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-5" for="dest">Destino:</label>
+                <select name="destino" id="dest">
+                {% for choice in paises %}
+                    <option>{{choice}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5">
+                    <input type="radio" name="vuelo" value="0" checked="checked"> Vuelo directo
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5">
+                    <input type="radio" name="vuelo" value="1"> Vuelo con escala
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-5">
+                    <input class="btn btn-default" type="submit" value="Buscar"><br>
+                </div>
+            </div>
+        </form>
+        <table class="table">
 			<tr>
 				<th><strong>Aerolínea</th>
-				<th><strong>IATA</th>
-				<th><strong>Airline_ID</th>
-				<th><strong>Airport Origen</th>
-				<th><strong>Airport Destination</th>
+                <th><strong>Aeropuerto Origen</strong></th>
+                <th><strong>Aeropuerto Destino</strong></th>
 				<th><strong>Escalas</th>
 			</tr>
-			{% for objeto in resultados %}			
-				<tr>
-				{% for elem in objeto %}			
-					<td align="center">{{elem}}</td>
-				{% endfor %}
-				</tr>
-			{% endfor %}
+            {% if resultados %}
+		        <h1 class="titulo">Resultados de la búsqueda</h1>
+
+                {% for objeto in resultados %}
+                    <tr>
+                    {% for elem in objeto %}
+                        <td align="center">{{elem}}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            {% endif %}
 		</table>
-	{% endif %}
+    </div>
 </body>
 </html>
