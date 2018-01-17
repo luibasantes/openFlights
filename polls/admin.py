@@ -4,5 +4,6 @@ from .models import *
 admin.site.register(Aeropuerto)
 admin.site.register(Aerolinea)
 admin.site.register(Ruta)
+admin.site.register(Usuario)
 
 

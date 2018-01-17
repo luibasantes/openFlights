@@ -41,3 +41,14 @@ class Ruta(models.Model):
 	Source_airport_ID = models.ForeignKey(Aeropuerto,related_name='SRC',on_delete=models.CASCADE,)
 	Destination_airport_ID = models.ForeignKey(Aeropuerto,on_delete=models.CASCADE,)
 	Stops = models.BigIntegerField()
+
+
+class Usuario(models.Model):
+	nombres = models.CharField(max_length=250)
+	celular = models.IntegerField(default=0)
+	f_partida = models.DateTimeField()
+	f_retorno = models.DateTimeField()
+	ciudad_partida = models.CharField(max_length=100)
+	ciudad_llegada = models.CharField(max_length=100)
+	escala = models.BooleanField(default=True)
+
