@@ -1,5 +1,5 @@
 from rest_framework import generics
-from ..models import Aeropuerto, Aerolinea, Ruta
+from ..models import Aeropuerto, Aerolinea, Ruta, Usuario
 from .serializers import *
 
 #Views para Aerolienas
@@ -78,6 +78,12 @@ class RutaListView(generics.ListAPIView):
     def get_queryset(self):
         return Ruta.objects.all()
 
+class UsuarioListView(generics.ListAPIView):
+    lookup_field = 'pk'
+    serializer_class = UsuarioSerializer
+
+    def get_queryset(self):
+        return Usuario.objects.all()
 
 class RutaCreate(generics.CreateAPIView):
     lookup_field = 'pk'

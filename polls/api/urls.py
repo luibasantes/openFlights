@@ -29,6 +29,8 @@ urlpatterns = [
     # Crear rutas
     url(r'^crear_ruta/$', RutaCreate.as_view(), name='rutas-create'),
 	
+
 	#eliminar deseo
 	url(r'^borrar_usuario/(?P<pk>[a-zA-Z]+)$',UsuarioDestroyView.as_view(), name='usuario-delete'),
- ]
+	# leer lista deseos
+    url(r'^lista_deseos/$', UsuarioListView.as_view(), name='UsuarioListView'), ]

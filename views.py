@@ -92,5 +92,6 @@ def search(request):
 		raise Http404("Problemas con el FORMULARIO")
 	return render (request,"formulario.html",contenido)
 
+
 def lista_deseos_read(request):
-	return render(request,"lista_deseos_read.html")
+	return render (request,"lista_deseos_read.html")

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flying</title>
+	<link rel="stylesheet" href="estilo.css"/>
+</head>
+<body>
+<header class = "titulo">Flying</header>
+<form class="cuerpo">
+ 	Nombres Completos: <input type="text"><br><br>
+ 	Numero Celular: <input type="text"><br><br>
+	Fecha Partida: <input type="date">
+	Fecha Llegada: <input type="date"><br><br>
+	Ciudad de Partida:
+		<select name="OS">
+            {% for choice in paises %}
+             <option>{{choice}}</option>
+            {% endfor %}			
+		</select><br><br>
+	Ciudad de Llegada:
+		<select name="OS">
+           {% for choice in paises %}
+             <option>{{choice}}</option>
+            {% endfor %}	
+		</select><br>
+	<input type="checkbox">Escala<br><br>
+	<input type="submit" value="Guardar">
+</form><br> 
+</form></body>
+</html>

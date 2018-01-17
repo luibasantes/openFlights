@@ -1,0 +1,10 @@
+.titulo{
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+}
+.cuerpo{
+	padding-left: 20%;
+	font-weight: bold;
+	font-size: 20px;
+}
