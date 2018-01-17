@@ -21,5 +21,5 @@ class RutaSerializer(serializers.ModelSerializer):
 class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model= Usuario
-		fields=('nombre','celular','f_partida','f_retorno','ciudad_partida','ciudad_llegada','escala')
+		fields=('nombres','celular','f_partida','f_retorno','ciudad_partida','ciudad_llegada','escala')
 	

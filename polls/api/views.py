@@ -1,6 +1,6 @@
 from rest_framework import generics
 from ..models import Aeropuerto, Aerolinea, Ruta
-from .serializers import AerolineaSerializer, AeropuertoSerializer, RutaSerializer
+from .serializers import *
 
 #Views para Aerolienas
 class AerolineaView(generics.RetrieveAPIView):
@@ -86,3 +86,23 @@ class RutaCreate(generics.CreateAPIView):
     def get_queryset(self):
         return Ruta.objects.all()
 
+#Views para Deseo
+
+class UsuarioDestroyView(generics.DestroyAPIView):
+	lookup_field='pk'
+	serializer_class= UsuarioSerializer
+	
+	def get_queryset(self):
+		return Usuario.objects.all()
+		
+	def get_object(self):
+		nombres = self.kwargs.get("pk")
+		return Usuario.objects.get(nombres=nombres)
+	
+	def delete(self,request,*args,**kwargs):
+		return self.destroy(request, *args, **kwargs)
+	
+	def destroy(self,request,*args,**kwargs):
+		instance = self.get_object()
+		self.perform_destroy(instance)
+		return Response(status=status.HTTP_204_NO_CONTENT)
