@@ -10,6 +10,10 @@ class AerolineaView(generics.RetrieveAPIView):
     def get_queryset(self):
         return Aerolinea.objects.all()
 
+    def get_object(self):
+        aero_id = self.kwargs.get("pk")
+        return Aerolinea.objects.get(Airline_ID=aero_id)
+
 class AerolineaListView(generics.ListAPIView):
     lookup_field = 'pk'
     serializer_class = AerolineaSerializer
@@ -32,6 +36,10 @@ class AeropuertoView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Aeropuerto.objects.all()
+
+    def get_object(self):
+        aerop_id = self.kwargs.get("pk")
+        return Aerolinea.objects.get(Airport_ID=aerop_id)
 
 
 class AeropuertoListView(generics.ListAPIView):
@@ -57,6 +65,10 @@ class RutaView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return Ruta.objects.all()
+
+    def get_object(self):
+        aerop_id = self.kwargs.get("pk")
+        return Aerolinea.objects.get(Airport_ID=aerop_id)
 
 
 class RutaListView(generics.ListAPIView):
