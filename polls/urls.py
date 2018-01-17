@@ -23,4 +23,6 @@ urlpatterns = [
 	#Busqueda 127.0.0.1:8000/vuelos/search/
     url(r'^search/$', views.search, name='search'),
 	
+	#Busqueda 127.0.0.1:8000/vuelos/search/
+    url(r'^lista_deseos/$', views.lista_deseos_read, name='lista_deseos'),
 ]

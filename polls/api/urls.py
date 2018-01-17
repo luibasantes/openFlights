@@ -28,4 +28,7 @@ urlpatterns = [
 
     # Crear rutas
     url(r'^crear_ruta/$', RutaCreate.as_view(), name='rutas-create'),
+	
+	# leer lista deseos
+    url(r'^lista_deseos/$', UsuarioListView.as_view(), name='UsuarioListView'),
  ]
