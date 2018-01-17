@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flying</title>
+  	{% load static %}
+	<link rel="stylesheet" href= "{% static 'css/estilo.css' %}" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class= "titulo">Flying - Lista de Deseos</h1>
+        <table id="myTable" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>Nombre Completo</th>
+					<th>Celular</th>
+					<th>Fecha Partida</th>
+					<th>Fecha Retorno</th>
+					<th>Pais Partida</th>
+					<th>Pais Llegada</th>
+					<th>Escala</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th>Nombre Completo</th>
+					<th>Celular</th>
+					<th>Fecha Partida</th>
+					<th>Fecha Retorno</th>
+					<th>Pais Partida</th>
+					<th>Pais Llegada</th>
+					<th>Escala</th>
+				</tr>
+			</tfoot>
+			<tbody>
+				<td>Juan Perez</td>
+				<td>123456789</td>
+				<td>2018-03-02</td>
+				<td>2018-03-15</td>
+				<td>Ecuador</td>
+				<td>Costa Rica</td>
+				<td><input type= "checkbox" checked></input></td>
+			</tbody>
+		</table>
+    </div>
+	<script src="{% static 'js/carga_posts.js' %}"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</body>
+</html>
