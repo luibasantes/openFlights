@@ -33,8 +33,7 @@ class Aerolinea(models.Model):
 	
 	def __str__(self):
 		return self.Name +" -- " + self.Active
-	
-		
+
 
 class Ruta(models.Model):
 	Airline_ID = models.CharField(max_length=250)
@@ -46,8 +45,8 @@ class Ruta(models.Model):
 class Usuario(models.Model):
 	nombres = models.CharField(max_length=250)
 	celular = models.IntegerField(default=0)
-	f_partida = models.DateTimeField()
-	f_retorno = models.DateTimeField()
+	f_partida = models.DateField()
+	f_retorno = models.DateField()
 	ciudad_partida = models.CharField(max_length=100)
 	ciudad_llegada = models.CharField(max_length=100)
 	escala = models.BooleanField(default=True)
