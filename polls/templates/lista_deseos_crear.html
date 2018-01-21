@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Flying</title>
-	<link rel="stylesheet" href="estilo.css"/>
-</head>
-<body>
-<header class = "titulo">Flying</header>
-<form class="cuerpo">
- 	Nombres Completos: <input type="text"><br><br>
- 	Numero Celular: <input type="text"><br><br>
-	Fecha Partida: <input type="date">
-	Fecha Llegada: <input type="date"><br><br>
-	Ciudad de Partida:
-		<select name="OS">
-            {% for choice in paises %}
-             <option>{{choice}}</option>
-            {% endfor %}			
-		</select><br><br>
-	Ciudad de Llegada:
-		<select name="OS">
-           {% for choice in paises %}
-             <option>{{choice}}</option>
-            {% endfor %}	
-		</select><br>
-	<input type="checkbox">Escala<br><br>
-	<input type="submit" value="Guardar">
-</form><br> 
-</form></body>
+	<head>
+		<title>Flying</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'css/estilo1.css' %}"/>
+	</head>
+	<body>
+		<header class = "titulo">Flying</header>
+		<form class="cuerpo" method="post">
+			{% csrf_token %}
+			Nombres Completos: <input name="nombres" type="text"><br><br>
+			Numero Celular: <input name="celular" type="text"><br><br>
+			Fecha Partida: <input name="f_partida" type="date">
+			Fecha Llegada: <input name="f_retorno" type="date"><br><br>
+			Ciudad de Partida:
+				<select name="ciudad_partida">
+					{% for choice in paises %}
+					 <option>{{choice}}</option>
+					{% endfor %}
+				</select><br><br>
+			Ciudad de Llegada:
+				<select name="ciudad_llegada">
+				   {% for choice in paises %}
+					 <option>{{choice}}</option>
+					{% endfor %}
+				</select><br>
+			<input name="escala" type="checkbox">Escala<br><br>
+			<input type="submit" value="Guardar">
+		</form>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/crear_deseo.js' %}"></script>
+	</body>
 </html>

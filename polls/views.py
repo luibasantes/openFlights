@@ -94,3 +94,13 @@ def search(request):
 
 def lista_deseos_read(request):
 	return render(request,"lista_deseos_read.html")
+
+
+def crear_deseo(request):
+	paises = []
+	all_aeropuerto = Aeropuerto.objects.all()
+	for aero in all_aeropuerto:
+		paises.append(aero.Country)
+	paises = list(set(paises))
+	paises.sort()
+	return render(request, "lista_deseos_crear.html", {"paises":paises})
