@@ -1,4 +1,5 @@
-from rest_framework import generics
+from rest_framework import generics,status
+from rest_framework.response import Response
 from ..models import Aeropuerto, Aerolinea, Ruta, Usuario
 from .serializers import *
 
@@ -102,14 +103,16 @@ class UsuarioDestroyView(generics.DestroyAPIView):
 		return Usuario.objects.all()
 		
 	def get_object(self):
-		nombres = self.kwargs.get("pk")
-		return Usuario.objects.get(nombres=nombres)
+		nombre = self.kwargs.get("pk")
+		print("nombre:",nombre)
+		return Usuario.objects.get(nombres=nombre)
 	
 	def delete(self,request,*args,**kwargs):
 		return self.destroy(request, *args, **kwargs)
 	
 	def destroy(self,request,*args,**kwargs):
 		instance = self.get_object()
+		print("this instance:",instance)
 		self.perform_destroy(instance)
 		return Response(status=status.HTTP_204_NO_CONTENT)
 
