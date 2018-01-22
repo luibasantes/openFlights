@@ -123,3 +123,22 @@ class CrearDeseoView(generics.CreateAPIView):
 
     def get_queryset(self):
         return Usuario.objects.all()
+		
+class ModificarDeseoView(generics.UpdateAPIView):
+	queryset = Usuario.objects.all()
+	serializer_class = UsuarioSerializer
+	lookup_field = 'pk'
+	
+	def get_object(self):
+		nombre = self.kwargs.get("pk")
+		print("nombre:",nombre)
+		return Usuario.objects.get(nombres=nombre)
+	
+	def put(self, request, pk, format=None):
+		user = self.get_object()
+		serializer= UsuarioSerializer(user, data=request.data)
+		print(request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data)
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

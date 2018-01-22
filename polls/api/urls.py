@@ -37,7 +37,9 @@ urlpatterns = [
     url(r'^lista_deseos/$', UsuarioListView.as_view(), name='UsuarioListView'),
 
     # Crear deseo
-    url(r'crear_deseo/$', CrearDeseoView.as_view(), name='CrearDeseoView')
-
+    url(r'crear_deseo/$', CrearDeseoView.as_view(), name='CrearDeseoView'),
+	
+	# Modificar deseo
+	url(r'^modificar_deseo/(?P<pk>([a-zA-Z]| )+)$',ModificarDeseoView.as_view(), name='ModificarDeseoView')
 
 ]
