@@ -32,5 +32,12 @@ urlpatterns = [
 
 	#eliminar deseo
 	url(r'^borrar_usuario/(?P<pk>[a-zA-Z]+)$',UsuarioDestroyView.as_view(), name='usuario-delete'),
+
 	# leer lista deseos
-    url(r'^lista_deseos/$', UsuarioListView.as_view(), name='UsuarioListView'), ]
+    url(r'^lista_deseos/$', UsuarioListView.as_view(), name='UsuarioListView'),
+
+    # Crear deseo
+    url(r'crear_deseo/$', CrearDeseoView.as_view(), name='CrearDeseoView')
+
+
+]
