@@ -28,4 +28,6 @@ urlpatterns = [
 
 	#Crear deseo 127.0.0.1:8000/crear_deseo
 	url(r'^crear_deseo/$', views.crear_deseo, name='crear_deseos'),
+	#Eliminar deseo
+	url(r'^eliminar_deseo/$', views.eliminar_deseo,name='eliminar_deseo'),
 ]

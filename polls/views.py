@@ -104,3 +104,6 @@ def crear_deseo(request):
 	paises = list(set(paises))
 	paises.sort()
 	return render(request, "lista_deseos_crear.html", {"paises":paises})
+
+def eliminar_deseo(request):
+	return render(request,"lista_deseos_eliminar.html")
